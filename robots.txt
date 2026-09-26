@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /music/
+Disallow: /upload/
+Disallow: /api/
+Disallow: /stats/
+
+Sitemap: https://cv.amirosein.ir/sitemap.xml

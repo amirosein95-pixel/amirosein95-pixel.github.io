@@ -1,0 +1,91 @@
+/* PDF CV — rendered by build.mjs with headless Chrome. Always light, one column, ATS-friendly text. */
+@font-face { font-family: 'Geist'; src: url('fonts/geist-var.woff2') format('woff2'); font-weight: 100 900; }
+@font-face { font-family: 'Geist Mono'; src: url('fonts/geist-mono-var.woff2') format('woff2'); font-weight: 100 900; }
+@font-face {
+  font-family: 'Vazirmatn'; src: url('fonts/vazirmatn-arabic-var.woff2') format('woff2'); font-weight: 100 900;
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
+}
+
+@page { size: A4; margin: 13mm 15mm 15mm; }
+@page {
+  @bottom-left { font: 400 6.8pt 'Geist', 'Vazirmatn', sans-serif; color: #8a8a83; vertical-align: top; padding-top: 4mm; }
+}
+@page {
+  @bottom-right { font: 400 6.8pt 'Geist Mono', 'Vazirmatn', monospace; color: #8a8a83; vertical-align: top; padding-top: 4mm; }
+}
+
+:root {
+  --ink: #141413; --ink-2: #3a3a37; --muted: #75756f; --rule: #dddcd5; --accent: #1d5c3d;
+  --sans: 'Geist', 'Vazirmatn', sans-serif; --mono: 'Geist Mono', 'Vazirmatn', monospace;
+}
+[lang="fa"] { --sans: 'Vazirmatn', 'Geist', sans-serif; --mono: 'Vazirmatn', 'Geist Mono', monospace; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body.cv { font: 400 8.6pt/1.45 var(--sans); color: var(--ink-2); background: #fff; }
+[lang="fa"] body.cv { font-size: 8.5pt; line-height: 1.8; }
+ul { list-style: none; }
+a { color: inherit; text-decoration: none; }
+strong { color: var(--ink); font-weight: 600; }
+i { font-style: normal; color: var(--rule); margin: 0 1.6mm; }
+
+/* header */
+.cv-head { display: flex; align-items: center; gap: 5mm; }
+.cv-head h1 { font-size: 21pt; font-weight: 620; letter-spacing: -.03em; line-height: 1.05; color: var(--ink); }
+[lang="fa"] .cv-head h1 { letter-spacing: 0; font-weight: 800; line-height: 1.3; }
+.cv-role { margin-top: 1.4mm; font-size: 9.6pt; font-weight: 500; color: var(--ink-2); }
+.cv-contact { margin-top: 2mm; font-size: 8pt; color: var(--muted); }
+.cv-contact a { color: var(--ink-2); }
+.cv-photo { width: 21mm; height: 21mm; border-radius: 2mm; object-fit: cover; filter: grayscale(1); }
+
+.cv-headline { margin-top: 5mm; padding-top: 3.5mm; border-top: 1pt solid var(--ink); font-size: 11pt; font-weight: 560; letter-spacing: -.015em; line-height: 1.35; color: var(--ink); }
+[lang="fa"] .cv-headline { letter-spacing: 0; font-weight: 700; line-height: 1.7; }
+
+.cv-stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 3.5mm; border-top: .6pt solid var(--rule); border-bottom: .6pt solid var(--rule); }
+.cv-stats > div { padding: 2.2mm 3mm 2.4mm 0; }
+.cv-stats > div + div { padding-inline-start: 3mm; border-inline-start: .6pt solid var(--rule); }
+[dir="rtl"] .cv-stats > div { padding: 2.2mm 0 2.4mm 3mm; }
+[dir="rtl"] .cv-stats > div + div { padding-inline-start: 3mm; }
+.cv-stats dt { font-size: 12pt; font-weight: 600; letter-spacing: -.02em; color: var(--ink); }
+[lang="fa"] .cv-stats dt { letter-spacing: 0; font-weight: 700; }
+.cv-stats dd { margin-top: .4mm; font-size: 7.2pt; line-height: 1.35; color: var(--muted); }
+
+/* sections */
+.cv-sec { margin-top: 5mm; }
+.cv-sec h2 { display: flex; align-items: center; gap: 3mm; margin-bottom: 2.4mm; font: 600 7.4pt/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); break-after: avoid; }
+[lang="fa"] .cv-sec h2 { font: 700 8.6pt/1.4 var(--sans); letter-spacing: 0; }
+.cv-sec h2::after { content: ''; flex: 1; height: .6pt; background: var(--rule); }
+.cv-summary p + p { margin-top: 1.4mm; }
+
+.cv-item { break-inside: avoid; }
+.cv-item + .cv-item { margin-top: 3.2mm; }
+.cv-item header { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+.cv-item h3 { font-size: 9.2pt; font-weight: 600; color: var(--ink); }
+.cv-item h3 .org { font-weight: 400; color: var(--ink-2); }
+.tag { display: inline-block; margin-inline-start: 1mm; padding: .2mm 1.4mm; border: .5pt solid var(--rule); border-radius: 3mm; font: 500 6.3pt/1.4 var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); vertical-align: 1pt; }
+[lang="fa"] .tag { font-size: 7pt; letter-spacing: 0; }
+.when { font: 400 7.6pt/1 var(--mono); color: var(--muted); white-space: nowrap; }
+[lang="fa"] .when { font-size: 8pt; }
+.cv-item p { margin-top: 1mm; }
+.cv-item ul { display: block; margin-top: 1.2mm; }
+.cv-item li { position: relative; padding-inline-start: 3.2mm; }
+.cv-item li + li { margin-top: .6mm; }
+.cv-item li::before { content: ''; position: absolute; inset-inline-start: 0; top: .72em; width: 1.6mm; height: .6pt; background: var(--muted); }
+[lang="fa"] .cv-item li::before { top: .95em; }
+
+.cv-caps > div { display: grid; grid-template-columns: 34mm 1fr; gap: 3mm; padding: 1mm 0; break-inside: avoid; }
+.cv-caps > div + div { border-top: .5pt solid #eeede7; }
+.cv-caps dt { font-weight: 600; color: var(--ink); }
+.cv-caps dd { color: var(--ink-2); }
+
+.cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4mm 6mm; }
+.cv-mini { break-inside: avoid; }
+.cv-mini header { display: flex; justify-content: space-between; align-items: baseline; gap: 3mm; }
+.cv-mini h3 { font-size: 8.6pt; font-weight: 600; color: var(--ink); }
+.cv-mini p { margin-top: .4mm; font-size: 8pt; }
+.cv-mini .role { color: var(--ink); font-weight: 500; }
+
+.cv-approach { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; font-size: 7.9pt; }
+.cv-approach strong { display: block; margin-bottom: .4mm; }
+.cv-line + .cv-line { margin-top: 1mm; }
+.cv-last { break-inside: avoid; }
